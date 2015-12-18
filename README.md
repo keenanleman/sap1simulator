@@ -58,5 +58,3 @@ Dokumentasi dari program kami hasilkan dengan tool __yuidoc__ dan dapat diakses 
 - Pengguna dapat melihat _log_ dari simulasi terakhir maupun yang sedang berjalan dengan menekan tombol __Log__.
 
 - Kecepatan animasi dapat diatur dengan menggeser _slider_ __Animation Speed__ ke kiri untuk memperlambat jalannya animasi, dan ke kanan untuk mempercepat jalannya animasi.
-
-- Tombol __About__ digunakan untuk menampilkan informasi dari penulis program ini.

@@ -1,0 +1,26 @@
+{
+  "name": "sapApp",
+  "authors": [
+    "keenanleman <kenl@kenl.name>"
+  ],
+  "description": "Simple As Possible 1 Architecture Simulator",
+  "main": "sapApp.html",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jqueryui": "~1.11.4",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "angular": "angularjs#~1.4.7"
+  }
+}

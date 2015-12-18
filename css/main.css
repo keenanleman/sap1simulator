@@ -1,0 +1,134 @@
+body{
+    padding: 10px;
+    height:100%;
+}
+@font-face{
+    font-family: JosefinSans;
+    font-weight:bold;
+    src: url(../fonts/JosefinSans-Bold.ttf);
+}
+
+@font-face{
+    font-family: JosefinSans;
+    font-weight:normal;
+    src: url(fonts/JosefinSans-Regular.ttf);
+}
+#app-window{
+    border-radius:8px;
+    border: 2px solid #555;
+    overflow-y :scroll;
+}
+#simulation-window{
+    height:500px;
+    width:700px;
+    border-radius:5px;
+    border: 2px solid #555;
+    background-color: #555;
+    overflow:scroll;
+}
+#side-window{
+    padding: 20px 10px 20px 10px;
+}
+.busBox{
+    background-color:#fff;
+    height: 60%;
+    width:180px;
+    border-radius:10px;
+    border: 5px solid #428bca;
+    position:absolute;
+    left: 33%;
+    top: 8%;
+    margin:0px 0px 0px 0px;
+    padding:5px;
+    z-index:10;
+}
+
+#buswTitle{
+    font-family: JosefinSans, sans-serif;
+    font-weight : bold;
+    font-size: 2em;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    padding-top: 50%;
+}
+
+.carrierBox{
+    height: 20px;
+    position:absolute;
+    background-color:red;
+    border:1px solid red;
+    opacity:0;
+    z-index: 12;
+}
+.registerBox{
+    background-color: #fff;
+    border-radius:4px;
+    border: 2px solid #428bca;
+    width:120px;
+    position:absolute;
+    margin:0px 0px 0px 0px;
+    padding:0px;
+    z-index:10;
+}
+
+.connector{
+    position : absolute;
+    background-color : #428bca;
+    font-family: JosefinSans, sans-serif;
+    font-weight : bold;
+    z-index : 0;
+}
+
+.connectorTitle{
+    position: absolute;
+    color:#fff;
+    width:100%;
+    text-align : center;
+}
+
+.registerTitle{
+    margin:0px;
+    padding:0px;
+    background-color:#428bca;
+    font-family: JosefinSans, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.registerData{
+    margin:0px;
+    padding:0px;
+    font-family: JosesfinSans, sans-serif;
+    font-weight: normal;
+    text-align: center;
+    height:20px;
+    width:100%;
+}
+
+
+#commandField{
+    width:100%;
+}
+
+#sourceFieldGroup{
+    width:100%;
+    height:200px;
+}
+#sourceField{
+    width:100%;
+    height:200px;
+}
+#speedSlider{
+    width: 100px;
+}
+.logbody{
+    overflow-y:scroll;
+    height:500px;
+}
+
+.aboutTable{
+	font-family:JosefinSans, sans-serif;
+	font-weight:bold;
+}

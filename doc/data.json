@@ -1,0 +1,1937 @@
+{
+    "project": {
+        "name": "SAP-1 Simulator",
+        "description": "Simulator for SAP-1",
+        "version": "0.0.1"
+    },
+    "files": {
+        "js/controllers/controlModule.js": {
+            "name": "js/controllers/controlModule.js",
+            "modules": {
+                "controlModule": 1
+            },
+            "classes": {
+                "controlCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/controllers/simulatorModule.js": {
+            "name": "js/controllers/simulatorModule.js",
+            "modules": {
+                "simulatorModule": 1
+            },
+            "classes": {
+                "simulatorCtrl": 1,
+                "Register": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/coreDataStructure/bdInfo.js": {
+            "name": "js/coreDataStructure/bdInfo.js",
+            "modules": {},
+            "classes": {
+                "BdInfo": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/coreDataStructure/cuInfo.js": {
+            "name": "js/coreDataStructure/cuInfo.js",
+            "modules": {},
+            "classes": {
+                "CuInfo": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/coreDataStructure/ramInfo.js": {
+            "name": "js/coreDataStructure/ramInfo.js",
+            "modules": {},
+            "classes": {
+                "RamInfo": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/coreDataStructure/registerInfo.js": {
+            "name": "js/coreDataStructure/registerInfo.js",
+            "modules": {},
+            "classes": {
+                "RegisterInfo": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/services/parserModule.js": {
+            "name": "js/services/parserModule.js",
+            "modules": {
+                "parserModule": 1
+            },
+            "classes": {
+                "parserService": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/services/registerModule.js": {
+            "name": "js/services/registerModule.js",
+            "modules": {
+                "registerModule": 1
+            },
+            "classes": {
+                "registerService": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/services/schedulerModule.js": {
+            "name": "js/services/schedulerModule.js",
+            "modules": {
+                "schedulerModule": 1
+            },
+            "classes": {
+                "schedulerModule": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/utility/utility.js": {
+            "name": "js/utility/utility.js",
+            "modules": {
+                "RegisterInfoPseudoModule": 1
+            },
+            "classes": {
+                "util": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/app.js": {
+            "name": "js/app.js",
+            "modules": {
+                "sapApp": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "controlModule": {
+            "name": "controlModule",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "controlCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/controllers/controlModule.js",
+            "line": 7,
+            "description": "Sebuah module berisi sebuah controller yaitu controlCtrl controller yang\nberguna sebagai interface untuk berinteraksi dengan simulasi/simulationCtrl controller."
+        },
+        "simulatorModule": {
+            "name": "simulatorModule",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "simulatorCtrl": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/controllers/simulatorModule.js",
+            "line": 7,
+            "description": "Sebuah module berisi sebuah controller yaitu simulationCtrl controller yang\nberguna untuk berinteraksi langsung dengan DOM dan animasi DOM."
+        },
+        "RegisterInfoPseudoModule": {
+            "name": "RegisterInfoPseudoModule",
+            "submodules": {
+                "undefined": 1
+            },
+            "elements": {},
+            "classes": {
+                "util": 1,
+                "Register": 1,
+                "BdInfo": 1,
+                "CuInfo": 1,
+                "RamInfo": 1,
+                "RegisterInfo": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/utility/utility.js",
+            "line": 1,
+            "description": "Objek util\nobjek yang berisi method-method utility, untuk mengolah data dan melakukan penurunan kelas",
+            "itemtype": "property",
+            "type": "RegisterInfo"
+        },
+        "parserModule": {
+            "name": "parserModule",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "parserService": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/services/parserModule.js",
+            "line": 8,
+            "description": "Sebuah module berisi sebuah service yaitu  parserService yang\nberguna untuk meninterpretasikan ekspresi menjadi source code dan juga merubah bentuk source menjadi\nbentuk binary."
+        },
+        "registerModule": {
+            "name": "registerModule",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "registerService": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/services/registerModule.js",
+            "line": 6,
+            "description": "Sebuah modul yang berisi sebuah service yang berlaku sebagai Factory yang menghasilkan semua\ntipe register yang digunakan"
+        },
+        "schedulerModule": {
+            "name": "schedulerModule",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "schedulerModule": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/services/schedulerModule.js",
+            "line": 5,
+            "description": "Sebuah modul yang berisi sebuah service yang berlaku sebagai pemandu jalannya simulasi"
+        },
+        "sapApp": {
+            "name": "sapApp",
+            "submodules": {},
+            "elements": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/app.js",
+            "line": 1,
+            "description": "Module utama aplikasi, sebagai tempat semua modul saling berinteraksi"
+        }
+    },
+    "classes": {
+        "controlCtrl": {
+            "name": "controlCtrl",
+            "shortname": "controlCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "controlModule",
+            "namespace": "",
+            "file": "js/controllers/controlModule.js",
+            "line": 7,
+            "description": "controlCtrl merupakan sebuah controller yang dipangil oleh DOM sebagai sebuah constructor,\ncontroller ini merupakan sebuah interface untuk berinteraksi dengan simulationCtrl",
+            "is_constructor": 1
+        },
+        "simulatorCtrl": {
+            "name": "simulatorCtrl",
+            "shortname": "simulatorCtrl",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "simulatorModule",
+            "namespace": "",
+            "file": "js/controllers/simulatorModule.js",
+            "line": 7,
+            "description": "simulatorCtrl merupakan sebuah controller yang dipangil oleh DOM sebegai sebuah constructor,\ncontroller ini berguna sebagai DOM generator, DOM controller, dan jembatan antara DOM dan\nmodel data.",
+            "is_constructor": 1
+        },
+        "Register": {
+            "name": "Register",
+            "shortname": "Register",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RegisterInfoPseudoModule",
+            "namespace": "",
+            "file": "js/controllers/simulatorModule.js",
+            "line": 550,
+            "description": "Kelas Register merupakan kelas wrapper dari kelas RegisterInfo yang memberikan\nkelas RegisterInfo kemampuan untuk berinteraksi langsung dengan DOM dan animasi DOM",
+            "itemtype": "method",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "tipe register yang akan dibuat",
+                    "type": "String"
+                },
+                {
+                    "name": "title",
+                    "description": "nama register yang akan dibuat",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "nilai awal register",
+                    "type": "String"
+                },
+                {
+                    "name": "left",
+                    "description": "posisi x register",
+                    "type": "String"
+                },
+                {
+                    "name": "top",
+                    "description": "posisi y register",
+                    "type": "String"
+                },
+                {
+                    "name": "bit",
+                    "description": "ukuran register dalam bit",
+                    "type": "String"
+                }
+            ],
+            "is_constructor": 1
+        },
+        "BdInfo": {
+            "name": "BdInfo",
+            "shortname": "BdInfo",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RegisterInfoPseudoModule",
+            "namespace": "",
+            "file": "js/coreDataStructure/bdInfo.js",
+            "line": 1,
+            "description": "Merupakan kelas turunan dari kelas RegisterInfo, yang secara spesifik\ndigunakan untuk membuat register Binary Display",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "left",
+                    "description": "posisi x dari register",
+                    "type": "Number"
+                },
+                {
+                    "name": "top",
+                    "description": "posisi y dari register",
+                    "type": "Number"
+                }
+            ],
+            "extends": "RegisterInfo"
+        },
+        "CuInfo": {
+            "name": "CuInfo",
+            "shortname": "CuInfo",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RegisterInfoPseudoModule",
+            "namespace": "",
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 1,
+            "description": "Merupakan kelas turunan dari kelas RegisterInfo, yang secara spesifik\ndigunakan untuk membuat register CU",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "left",
+                    "description": "posisi x dari register",
+                    "type": "Number"
+                },
+                {
+                    "name": "left",
+                    "description": "posisi y dari register",
+                    "type": "Number"
+                }
+            ],
+            "extends": "RegisterInfo"
+        },
+        "RamInfo": {
+            "name": "RamInfo",
+            "shortname": "RamInfo",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RegisterInfoPseudoModule",
+            "namespace": "",
+            "file": "js/coreDataStructure/ramInfo.js",
+            "line": 1,
+            "description": "Merupakan kelas turunan dari kelas RegisterInfo, yang digunakan untuk membuat register ram",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "value",
+                    "description": "nilai awal register",
+                    "type": "String"
+                },
+                {
+                    "name": "left",
+                    "description": "posisi x register",
+                    "type": "String"
+                },
+                {
+                    "name": "top",
+                    "description": "posisi y register",
+                    "type": "String"
+                }
+            ]
+        },
+        "RegisterInfo": {
+            "name": "RegisterInfo",
+            "shortname": "RegisterInfo",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RegisterInfoPseudoModule",
+            "namespace": "",
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 1,
+            "description": "Merupakan kelas yang membuat objek-objek register-register umum",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "title",
+                    "description": "name register",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "nilai awal register",
+                    "type": "String"
+                },
+                {
+                    "name": "left",
+                    "description": "posisi x register",
+                    "type": "String"
+                },
+                {
+                    "name": "top",
+                    "description": "posisi y register",
+                    "type": "String"
+                },
+                {
+                    "name": "bits",
+                    "description": "ukuran register dalam bit",
+                    "type": "String"
+                }
+            ]
+        },
+        "parserService": {
+            "name": "parserService",
+            "shortname": "parserService",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "parserModule",
+            "namespace": "",
+            "file": "js/services/parserModule.js",
+            "line": 8,
+            "description": "parserService berguna untuk meninterpretasikan expresi menjadi source code dan juga merubah bentuk source menjadi\nbentuk binary. Selain itu parserService juga meninterpretasikan operasi-operasi sehingga mudah di simulasikan",
+            "is_constructor": 1
+        },
+        "registerService": {
+            "name": "registerService",
+            "shortname": "registerService",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "registerModule",
+            "namespace": "",
+            "file": "js/services/registerModule.js",
+            "line": 6,
+            "description": "registerService berguna sebagai Factory yang menghasilkan semua tipe register yang digunakan",
+            "is_constructor": 1
+        },
+        "schedulerModule": {
+            "name": "schedulerModule",
+            "shortname": "schedulerModule",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "schedulerModule",
+            "namespace": "",
+            "file": "js/services/schedulerModule.js",
+            "line": 5,
+            "description": "schedulerService berguna sebagai pemandu jalannya simulasi",
+            "is_constructor": 1
+        },
+        "util": {
+            "name": "util",
+            "shortname": "util",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RegisterInfoPseudoModule",
+            "namespace": "",
+            "file": "js/utility/utility.js",
+            "line": 1,
+            "description": "Objek util\nobjek yang berisi method-method utility, untuk mengolah data dan melakukan penurunan kelas"
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 16,
+            "description": "Merupakan model dari TextField expression",
+            "itemtype": "property",
+            "name": "expression",
+            "type": "String",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 22,
+            "description": "Merupakan model dari TextField instruction",
+            "itemtype": "property",
+            "name": "instruction",
+            "type": "String",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 32,
+            "description": "Digunakan tombol edit untuk memberikan user akses terhadap hasil source code yang di generate oleh parser\ndan memparse kembali hasil perubahan",
+            "itemtype": "method",
+            "name": "editToogle",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 53,
+            "description": "Digunakan tombol run untuk memulai simulasi",
+            "itemtype": "method",
+            "name": "run",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 58,
+            "description": "Sebuah trigger untuk event 'startSimulation', yang akan memulai simulasi",
+            "itemtype": "event",
+            "name": "startSimulation",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 65,
+            "description": "Digunakan tombol pause untuk menghentikan simulasi",
+            "itemtype": "method",
+            "name": "pause",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 70,
+            "description": "Sebuah trigger untuk event 'pauseSimulation', yang akan menghentikan simulasi",
+            "itemtype": "event",
+            "name": "pauseSimulation",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 77,
+            "description": "Digunakan tombol reset untuk mereset simulasi,ram,dan register",
+            "itemtype": "method",
+            "name": "reset",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 82,
+            "description": "Sebuah trigger untuk event 'resetSimulation', yang akan mereset simulasi,ram,dan register",
+            "itemtype": "event",
+            "name": "resetSimulation",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 88,
+            "description": "Berjalan ketika event 'simulationEnded' di broadcast",
+            "itemtype": "event",
+            "name": "simulationEnded",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/controlModule.js",
+            "line": 95,
+            "description": "Mem-parse expresi yang diberikan oleh user dan mengubahnya menjadi source code dengan mengunakan\n'parserService' dari parserModule, dan memasukannya kedalam RAM dan ke dalam 'schedulerService'",
+            "itemtype": "method",
+            "name": "evaluate",
+            "class": "controlCtrl",
+            "module": "controlModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 16,
+            "description": "Pengaturan kecepatan animasi",
+            "itemtype": "property",
+            "name": "animationSpeed",
+            "type": "Number",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 23,
+            "description": "Pengaturan delay animasi",
+            "itemtype": "property",
+            "name": "masterDelay",
+            "type": "Number",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 29,
+            "description": "Event slide dari speedSlider yang mengatur kecepatan animasi",
+            "itemtype": "event",
+            "name": "slide",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 39,
+            "description": "Sebagai objek yang menampung register",
+            "itemtype": "property",
+            "name": "reg",
+            "type": "Object",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 45,
+            "description": "Dijalankan ketika instruksi LDA di gunakan,\nmelakukan instruksi tergantung dari state method ini dipanggil dan dipandu oleh 'schedulerService'",
+            "itemtype": "method",
+            "name": "lda",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 67,
+            "description": "Dijalankan ketika instruksi HALT di gunakan, dan dipandu oleh 'schedulerService'\nmelakukan instruksi tergantung dari state method ini dipanggil dan dipandu oleh 'schedulerService'",
+            "itemtype": "method",
+            "name": "halt",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 87,
+            "description": "Dijalankan ketika instruksi OUT di gunakan, dan dipandu oleh 'schedulerService'\nmelakukan instruksi tergantung dari state method ini dipanggil dan dipandu oleh 'schedulerService'",
+            "itemtype": "method",
+            "name": "out",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 110,
+            "description": "Dijalankan ketika instruksi ADD atau SUB di gunakan, dan dipandu oleh 'schedulerService'\nmelakukan instruksi tergantung dari state method ini dipanggil dan dipandu oleh 'schedulerService'",
+            "itemtype": "method",
+            "name": "cal",
+            "params": [
+                {
+                    "name": "plus",
+                    "description": "jika bernilai true maka operasi ADD dijalankan jika false maka operasi SUB yang akan dijalankan",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 134,
+            "description": "Dijalankan ketika sebuah instruksi memiliki state yang sama, maka akan dijalankan\nsebuah method umum saja , dan dipandu oleh 'schedulerService'",
+            "itemtype": "method",
+            "name": "generalInstruction",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 149,
+            "description": "Dijalankan ketika instruksi-instruksi berada pada state T1\nmelakukan animasi, perpindahan data, dan perubahan register CU",
+            "itemtype": "method",
+            "name": "T1",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 166,
+            "description": "Dijalankan ketika instruksi-instruksi berada pada state T2\nmelakukan animasi, perpindahan data, dan perubahan register CU",
+            "itemtype": "method",
+            "name": "T2",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 182,
+            "description": "Dijalankan ketika instruksi-instruksi berada pada state T3\nmelakukan animasi, perpindahan data, dan perubahan register CU",
+            "itemtype": "method",
+            "name": "T3",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 205,
+            "description": "Dijalankan ketika instruksi-instruksi berada pada state T4, kecuali instruksi OUT\nmelakukan animasi, perpindahan data, dan perubahan register CU",
+            "itemtype": "method",
+            "name": "T4",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 225,
+            "description": "Dijalankan ketika instruksi LDA berada pada state T5\nmelakukan animasi, perpindahan data, dan perubahan register CU",
+            "itemtype": "method",
+            "name": "T5_LDA",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 242,
+            "description": "Dijalankan ketika instruksi OUT berada pada state T4\nmelakukan animasi, perpindahan data, dan perubahan register CU",
+            "itemtype": "method",
+            "name": "T4_OUT",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 262,
+            "description": "Dijalankan ketika instruksi ADD atau SUB berada pada state T5\nmelakukan animasi, perpindahan data, dan perubahan register CU",
+            "itemtype": "method",
+            "name": "T5_CAL",
+            "params": [
+                {
+                    "name": "plus",
+                    "description": "jika bernilai true maka operasi ADD dijalankan jika false maka operasi SUB yang akan dijalankan",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 283,
+            "description": "Dijalankan ketika instruksi ADD atau SUB berada pada state T6\nmelakukan animasi, perpindahan data, dan perubahan register CU",
+            "itemtype": "method",
+            "name": "T6_CAL",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 300,
+            "description": "Digunakan untuk membuat animasi dan perpindahan data, dari hasil sum atau substract dari\ndua buah register dan menyimpannya ke register lain",
+            "itemtype": "method",
+            "name": "addRegsTo",
+            "params": [
+                {
+                    "name": "reg1",
+                    "description": "register pertama dari 2 register yang akan di sum atau substract",
+                    "type": "Register"
+                },
+                {
+                    "name": "reg2",
+                    "description": "register pertama dari 2 register yang akan di sum atau men-substract",
+                    "type": "Register"
+                },
+                {
+                    "name": "dest",
+                    "description": "register dimana hasil akan disimpan",
+                    "type": "Register"
+                },
+                {
+                    "name": "plus",
+                    "description": "jika bernilai true maka data akan di sum dan jika false maka data akan di substract",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 332,
+            "description": "Model yang menyimpan instruksi yang sedang dijalankan",
+            "itemtype": "property",
+            "name": "currentIns",
+            "type": "{String}",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 338,
+            "description": "Model yang menyimpan state yang sedang berjalan",
+            "itemtype": "property",
+            "name": "state",
+            "type": "{Number}",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 344,
+            "description": "Sebuah objek yang menyimpan log dari hasil simulasi",
+            "itemtype": "property",
+            "name": "logs",
+            "type": "Array",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 350,
+            "description": "Model yang menyimpan status dari simulasi",
+            "itemtype": "property",
+            "name": "running",
+            "type": "{boolean}",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 356,
+            "description": "Method yang memulai simulasi di simulationCtrl",
+            "itemtype": "method",
+            "name": "startSimulation",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 365,
+            "description": "Method yang menghentikan simulasi di simulationCtrl",
+            "itemtype": "method",
+            "name": "pauseSimulation",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 373,
+            "description": "Method yang me-reset simulasi di simulationCtrl",
+            "itemtype": "method",
+            "name": "resetSimulation",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 387,
+            "description": "Membuat animasi sambungan antara dua register",
+            "itemtype": "method",
+            "name": "registerToRegisterConnection",
+            "params": [
+                {
+                    "name": "reg1",
+                    "description": "register yang akan disambungkan ke register kedua",
+                    "type": "Register"
+                },
+                {
+                    "name": "reg2",
+                    "description": "register yang akan disambungkan ke register pertama",
+                    "type": "Register"
+                },
+                {
+                    "name": "title",
+                    "description": "tulisan/judul yang akan ditampilkan",
+                    "type": "String"
+                },
+                {
+                    "name": "direction",
+                    "description": "arah dari jalur, ke kiri atau ke kanan ['left','right']",
+                    "type": "String"
+                }
+            ],
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 415,
+            "description": "Membuat animasi sambungan antara bus dengan register",
+            "itemtype": "method",
+            "name": "busConnection",
+            "params": [
+                {
+                    "name": "reg",
+                    "description": "register yang akan disambungkan ke bus",
+                    "type": "Register"
+                },
+                {
+                    "name": "title",
+                    "description": "tulisan/judul yang akan ditampilkan",
+                    "type": "String"
+                },
+                {
+                    "name": "align",
+                    "description": "tempat register berada, di sebelah kiri bus atau kanan ['left','right']",
+                    "type": "String"
+                },
+                {
+                    "name": "direction",
+                    "description": "arah dari jalur, ke kiri atau ke kanan ['left','right']",
+                    "type": "String"
+                }
+            ],
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 443,
+            "description": "Membuat animasi sambungan ganda antara bus dengan register",
+            "itemtype": "method",
+            "name": "doubleBusConnection",
+            "params": [
+                {
+                    "name": "reg",
+                    "description": "register yang akan disambungkan ke bus",
+                    "type": "Register"
+                },
+                {
+                    "name": "title1",
+                    "description": "tulisan/judul yang akan ditampilkan pada jalur pertama",
+                    "type": "String"
+                },
+                {
+                    "name": "title2",
+                    "description": "tulisan/judul yang akan ditampilkan pada jalur ke dua",
+                    "type": "String"
+                },
+                {
+                    "name": "align",
+                    "description": "tempat register berada, di sebelah kiri bus atau kanan ['left','right']",
+                    "type": "String"
+                },
+                {
+                    "name": "direction1",
+                    "description": "arah dari jalur pertama, ke kiri atau ke kanan ['left','right']",
+                    "type": "String"
+                },
+                {
+                    "name": "direction2",
+                    "description": "arah dari jalur kedua, ke kiri atau ke kanan ['left','right']",
+                    "type": "String"
+                }
+            ],
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 486,
+            "description": "Merupakan method yang secara langsung mengendalikan method-method animasi dan perpindahan data\nsecara synchronous, dan di pandu oleh flag-flag dari 'schedulerService'",
+            "itemtype": "method",
+            "name": "sentinel",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 526,
+            "description": "Merupakan event-listener dari event 'startSimulation', yang akan memulai simulasi",
+            "itemtype": "event",
+            "name": "startSimulation",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 534,
+            "description": "Merupakan event-listener dari event 'pauseSimulation', yang akan menghentikan simulasi",
+            "itemtype": "event",
+            "name": "pauseSimulation",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 542,
+            "description": "Merupakan event-listener dari event 'resetSimulation', yang akan me-reset simulasi",
+            "itemtype": "event",
+            "name": "resetSimulation",
+            "class": "simulatorCtrl",
+            "module": "simulatorModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 575,
+            "description": "Menyimpan DOM untuk register yang di construct",
+            "itemtype": "property",
+            "name": "dom",
+            "type": "Object",
+            "class": "Register",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 583,
+            "description": "Menyimpan DOM untuk register yang di construct",
+            "itemtype": "property",
+            "name": "dataDom",
+            "type": "Object",
+            "class": "Register",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 592,
+            "description": "Membuat DOM 'data carrier' sebagai animasi perpindahan data",
+            "itemtype": "method",
+            "name": "createCarrier",
+            "params": [
+                {
+                    "name": "EtoF",
+                    "description": "bagian 4-bit pertama jika bernilai satu dan 4-bit terakhir jika bernilai dua,\ndari 8 bit data yang akan dipindahkan ke register 4-bit, tidak di gunakan jika perpindahan data\nantara dua register berukuran sama.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Register",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 628,
+            "description": "Membuat animasi dan perpindahan data ke register lain",
+            "itemtype": "method",
+            "name": "moveData",
+            "params": [
+                {
+                    "name": "reg",
+                    "description": "register tempat data akan dipindahkan",
+                    "type": "Register"
+                },
+                {
+                    "name": "useBus",
+                    "description": "jika bernilai true maka animasi perpindahan data akan melewati bus dan sebaliknya",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "real",
+                    "description": "jika bernilai false maka data tidak akan dipindahkan melainkan hanya membuat animasinya saja",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "EtoF",
+                    "description": "bagian 4-bit pertama jika bernilai satu dan 4-bit terakhir jika bernilai dua,\ndari 8 bit data yang akan dipindahkan ke register 4-bit, tidak di gunakan jika perpindahan data\nantara dua register berukuran sama.",
+                    "type": "Number"
+                }
+            ],
+            "class": "Register",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 654,
+            "description": "Menambahkan 1 pada register",
+            "itemtype": "method",
+            "name": "increment",
+            "class": "Register",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/controllers/simulatorModule.js",
+            "line": 664,
+            "description": "Melakukan instansiasi register-register",
+            "itemtype": "method",
+            "name": "init",
+            "class": "Register",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/bdInfo.js",
+            "line": 13,
+            "description": "Method override,\nmethod ini di override dari kelas RegisterInfo karena Binary Display akan menunjukan angka dalam format desimal melainkan binary",
+            "itemtype": "method",
+            "name": "getDisplay",
+            "return": {
+                "description": "nilai desimal dari register",
+                "type": "String"
+            },
+            "class": "BdInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 13,
+            "description": "Method override, method kosong ini di override agar mampu mempertahankan\nsifat register CU namun mampu berinteraksi dengan kelas wrapper Register",
+            "itemtype": "method",
+            "name": "setData",
+            "params": [
+                {
+                    "name": "reginfo",
+                    "description": "reginfo tidak digunakan"
+                }
+            ],
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 20,
+            "description": "Method override, method kosong ini di override agar mampu mempertahankan\nsifat register CU namun mampu berinteraksi dengan kelas wrapper Register",
+            "itemtype": "method",
+            "name": "getData",
+            "return": {
+                "description": "0 tidak digunakan"
+            },
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 27,
+            "description": "Me-reset nilai dari register CU",
+            "itemtype": "method",
+            "name": "reset_cu",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 34,
+            "description": "Merubah sinyal cp menjadi 1",
+            "itemtype": "method",
+            "name": "cp",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 41,
+            "description": "Merubah ep menjadi 1",
+            "itemtype": "method",
+            "name": "ep",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 48,
+            "description": "Merubah lm menjadi 0",
+            "itemtype": "method",
+            "name": "not_lm",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 55,
+            "description": "Merubah ce menjadi 0",
+            "itemtype": "method",
+            "name": "not_ce",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 62,
+            "description": "Merubah li menjadi 0",
+            "itemtype": "method",
+            "name": "not_li",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 69,
+            "description": "Merubah ei menjadi 0",
+            "itemtype": "method",
+            "name": "not_ei",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 76,
+            "description": "Merubah la menjadi 0",
+            "itemtype": "method",
+            "name": "not_la",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 83,
+            "description": "Merubah ea menjadi 1",
+            "itemtype": "method",
+            "name": "ea",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 90,
+            "description": "Merubah su menjadi 1",
+            "itemtype": "method",
+            "name": "su",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 97,
+            "description": "Merubah eu menjadi 1",
+            "itemtype": "method",
+            "name": "eu",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 104,
+            "description": "Merubah lb menjadi 0",
+            "itemtype": "method",
+            "name": "lb",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/cuInfo.js",
+            "line": 111,
+            "description": "Merubah lo menjadi 0",
+            "itemtype": "method",
+            "name": "lo",
+            "class": "CuInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/ramInfo.js",
+            "line": 12,
+            "description": "Merupakan tempat menyimpan isi dari ram",
+            "itemtype": "property",
+            "name": "memory",
+            "type": "Object",
+            "class": "RamInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/ramInfo.js",
+            "line": 18,
+            "description": "Mereset nilai dari semua address di RAM menjadi nol",
+            "itemtype": "method",
+            "name": "resetRam",
+            "class": "RamInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/ramInfo.js",
+            "line": 30,
+            "description": "Merupakan method override\nMengeset nilai pada tempat yang ditunjuk pointer RAM",
+            "itemtype": "method",
+            "name": "setData",
+            "params": [
+                {
+                    "name": "reginfo",
+                    "description": "register yang di gunakan sebagai sumber data",
+                    "type": "RegisterInfo"
+                }
+            ],
+            "class": "RamInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/ramInfo.js",
+            "line": 41,
+            "description": "Merupakan method override\nMengembalikan data yang sedang ditunjuk oleh pointer RAM",
+            "itemtype": "method",
+            "name": "getData",
+            "params": [
+                {
+                    "name": "reginfo",
+                    "description": "register yang di gunakan sebagai sumber data",
+                    "type": "RegisterInfo"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "RamInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/ramInfo.js",
+            "line": 51,
+            "description": "Memasukan data pada RAM",
+            "itemtype": "method",
+            "name": "insert",
+            "class": "RamInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 13,
+            "description": "Menyimpan nama dari register untuk di tampilkan pada dom",
+            "itemtype": "property",
+            "name": "title",
+            "type": "String",
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 19,
+            "description": "Menyimpan nama dari register untuk dapat diakses dari kelas Register",
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 25,
+            "description": "Menyimpan nilai dari register dalam bentuk binary",
+            "itemtype": "property",
+            "name": "display",
+            "type": "String",
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 31,
+            "description": "Menyimpan ukuran dari register dalam bit",
+            "itemtype": "property",
+            "name": "bits",
+            "type": "Number",
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 37,
+            "description": "Menyimpan nilai dari register dalam bentuk desimal",
+            "itemtype": "property",
+            "name": "value",
+            "type": "Number",
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 43,
+            "description": "Menyimpan posisi x dari register",
+            "itemtype": "property",
+            "name": "left",
+            "type": "Number",
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 49,
+            "description": "Menyimpan posisi y dari register",
+            "itemtype": "property",
+            "name": "top",
+            "type": "Number",
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 55,
+            "description": "Mengeset data atau nilai pada register",
+            "itemtype": "method",
+            "name": "setData",
+            "params": [
+                {
+                    "name": "reginfo",
+                    "description": "register yang di gunakan sebagai sumber data",
+                    "type": "RegisterInfo"
+                },
+                {
+                    "name": "EtoF",
+                    "description": "bagian 4-bit pertama jika bernilai satu dan 4-bit terakhir jika bernilai dua,\ndari 8 bit data yang akan dipindahkan ke register 4-bit, tidak di gunakan jika perpindahan data\nantara dua register berukuran sama.",
+                    "type": "Number"
+                }
+            ],
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 78,
+            "description": "Mengambil data dari register",
+            "itemtype": "method",
+            "name": "getData",
+            "return": {
+                "description": "data dari register",
+                "type": "Number"
+            },
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 86,
+            "description": "Mengeset register dengan nol",
+            "itemtype": "method",
+            "name": "resetToZero",
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/coreDataStructure/registerInfo.js",
+            "line": 94,
+            "description": "Mengambil data dari register dalam bentuk binary",
+            "itemtype": "method",
+            "name": "getDisplay",
+            "return": {
+                "description": "data register dalam bentuk binary",
+                "type": "String"
+            },
+            "class": "RegisterInfo",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/services/parserModule.js",
+            "line": 15,
+            "description": "Sebuah method utility yang digunakan dalam proses parsing, method ini berguna untuk\nmenghilangkan semua anggota array yang kosong",
+            "itemtype": "method",
+            "name": "stripEmpty",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "Array yang akan diproses",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "array yang telah diproses",
+                "type": "Array"
+            },
+            "class": "parserService",
+            "module": "parserModule"
+        },
+        {
+            "file": "js/services/parserModule.js",
+            "line": 29,
+            "description": "Menghasilkan bentuk String dari perintah LDA dengan parameternya",
+            "itemtype": "method",
+            "name": "genLDA",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "parameter dari instruksi LDA",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "bentuk String dari instruksi LDA",
+                "type": "String"
+            },
+            "class": "parserService",
+            "module": "parserModule"
+        },
+        {
+            "file": "js/services/parserModule.js",
+            "line": 39,
+            "description": "Menghasilkan bentuk String dari perintah OUT",
+            "itemtype": "method",
+            "name": "genOUT",
+            "return": {
+                "description": "bentuk String dari instruksi OUT",
+                "type": "String"
+            },
+            "class": "parserService",
+            "module": "parserModule"
+        },
+        {
+            "file": "js/services/parserModule.js",
+            "line": 48,
+            "description": "Menghasilkan bentuk String dari perintah HALT",
+            "itemtype": "method",
+            "name": "genHALT",
+            "return": {
+                "description": "bentuk String dari instruksi HALT",
+                "type": "String"
+            },
+            "class": "parserService",
+            "module": "parserModule"
+        },
+        {
+            "file": "js/services/parserModule.js",
+            "line": 58,
+            "description": "Menghasilkan bentuk String dari perintah ADD atau SUB dengan parameternya",
+            "itemtype": "method",
+            "name": "genOPS",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "parameter dari instruksi ADD atau SUB",
+                    "type": "Number"
+                },
+                {
+                    "name": "plus",
+                    "description": "jika bernilai true maka akan di generate instruksi ADD dan jika false maka akan\ndigenerate instruksi SUB.",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "bentuk String dari instruksi ADD atau SUB",
+                "type": "String"
+            },
+            "class": "parserService",
+            "module": "parserModule"
+        },
+        {
+            "file": "js/services/parserModule.js",
+            "line": 75,
+            "description": "Meng-intepretasi ekspresi menjadi source code yang mudah diproses",
+            "itemtype": "method",
+            "name": "parseExpression",
+            "params": [
+                {
+                    "name": "line",
+                    "description": "ekspresi yang akan di proses",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "objek yang berisi source code dan nilai instruksi",
+                "type": "Object"
+            },
+            "class": "parserService",
+            "module": "parserModule"
+        },
+        {
+            "file": "js/services/parserModule.js",
+            "line": 108,
+            "description": "Merubah bentuk source code kedalam bentuk binary",
+            "itemtype": "method",
+            "name": "parseSourceCode",
+            "params": [
+                {
+                    "name": "lines",
+                    "description": "merupakan array dari source code",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "array yang berisi source code yang telah berbentuk binary",
+                "type": "Array"
+            },
+            "class": "parserService",
+            "module": "parserModule"
+        },
+        {
+            "file": "js/services/parserModule.js",
+            "line": 134,
+            "description": "Merubah source code berbentuk teks panjang menjadi Array dari setiap barisnya",
+            "itemtype": "method",
+            "name": "parseRawToLines",
+            "params": [
+                {
+                    "name": "lines",
+                    "description": "teks source code",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "array yang berisi source code yang telah di pecah menjadi array",
+                "type": "Array"
+            },
+            "class": "parserService",
+            "module": "parserModule"
+        },
+        {
+            "file": "js/services/registerModule.js",
+            "line": 14,
+            "description": "Menampung semua kelas RegisterInfo dan turunannya",
+            "itemtype": "property",
+            "name": "registers",
+            "type": "Object",
+            "class": "registerService",
+            "module": "registerModule"
+        },
+        {
+            "file": "js/services/registerModule.js",
+            "line": 20,
+            "description": "Mengembalikan objek RegisterInfo",
+            "itemtype": "method",
+            "name": "addRegister",
+            "params": [
+                {
+                    "name": "title",
+                    "description": "nama dari register",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "nilai awal dari register",
+                    "type": "Number"
+                },
+                {
+                    "name": "left",
+                    "description": "posisi x register",
+                    "type": "Number"
+                },
+                {
+                    "name": "top",
+                    "description": "posisi y register",
+                    "type": "Number"
+                },
+                {
+                    "name": "bits",
+                    "description": "ukuran register dalam bits",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "objek dari RegisterInfo",
+                "type": "RegisterInfo"
+            },
+            "class": "registerService",
+            "module": "registerModule"
+        },
+        {
+            "file": "js/services/registerModule.js",
+            "line": 35,
+            "description": "Mengembalikan objek RamInfo",
+            "itemtype": "method",
+            "name": "addRam",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "nilai awal dari register",
+                    "type": "Number"
+                },
+                {
+                    "name": "left",
+                    "description": "posisi x register",
+                    "type": "Number"
+                },
+                {
+                    "name": "top",
+                    "description": "posisi y register",
+                    "type": "Number"
+                }
+            ],
+            "class": "registerService",
+            "module": "registerModule"
+        },
+        {
+            "file": "js/services/registerModule.js",
+            "line": 47,
+            "description": "Mengembalikan objek CuInfo",
+            "itemtype": "method",
+            "name": "addCU",
+            "params": [
+                {
+                    "name": "left",
+                    "description": "posisi x register",
+                    "type": "Number"
+                },
+                {
+                    "name": "top",
+                    "description": "posisi y register",
+                    "type": "Number"
+                }
+            ],
+            "class": "registerService",
+            "module": "registerModule"
+        },
+        {
+            "file": "js/services/registerModule.js",
+            "line": 58,
+            "description": "Mengebamlikan objek BdInfo",
+            "itemtype": "method",
+            "name": "adBD",
+            "params": [
+                {
+                    "name": "left",
+                    "description": "posisi x register",
+                    "type": "Number"
+                },
+                {
+                    "name": "top",
+                    "description": "posisi y register",
+                    "type": "Number"
+                }
+            ],
+            "class": "registerService",
+            "module": "registerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 12,
+            "description": "Menyimpan index instruksi yang sedang berjalan",
+            "itemtype": "property",
+            "name": "currentInstruction",
+            "type": "Number",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 18,
+            "description": "Menyimpan state yang sedang berjalan",
+            "itemtype": "property",
+            "name": "currentState",
+            "type": "Number",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 24,
+            "description": "Status simulasi",
+            "itemtype": "property",
+            "name": "status",
+            "type": "Boolean",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 30,
+            "description": "Array dari instruksi",
+            "itemtype": "property",
+            "name": "instructions",
+            "type": "Array",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 36,
+            "description": "Memasukan instruksi-instruksi ke dalam scheduler",
+            "itemtype": "method",
+            "name": "setInstructions",
+            "params": [
+                {
+                    "name": "instructions",
+                    "description": "merupakan array dari instruksi",
+                    "type": "Array"
+                }
+            ],
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 44,
+            "description": "Mengeset index currentInstruction untuk me-load instruksi selanjutnya",
+            "itemtype": "method",
+            "name": "nextInstruction",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 51,
+            "description": "Mengeset index currentState untuk me-load state selanjutnya",
+            "itemtype": "method",
+            "name": "nextState",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 63,
+            "description": "Memulai scheduler",
+            "itemtype": "method",
+            "name": "startScheduler",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 70,
+            "description": "Mereset schedulerService",
+            "itemtype": "method",
+            "name": "resetScheduler",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 78,
+            "description": "Menghentikan scheduler",
+            "itemtype": "method",
+            "name": "pauseScheduler",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/services/schedulerModule.js",
+            "line": 85,
+            "description": "Mengembalikan instruksi yang sedang berjalan",
+            "itemtype": "method",
+            "name": "pauseScheduler",
+            "class": "schedulerModule",
+            "module": "schedulerModule"
+        },
+        {
+            "file": "js/utility/utility.js",
+            "line": 8,
+            "description": "Method ini berguna untuk mengkonversi bilangan decimal ke binary",
+            "itemtype": "method",
+            "name": "convertToBin",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "data register yang akan di konversi",
+                    "type": "RegisterInfo"
+                }
+            ],
+            "return": {
+                "description": "nilai dari register dalam bentuk binary",
+                "type": "String"
+            },
+            "class": "util",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/utility/utility.js",
+            "line": 24,
+            "description": "Method ini berguna untuk mengkonversi nilai register dari  bilangan decimal kedalam 2 x 4bit binary format dan juga decimal",
+            "itemtype": "method",
+            "name": "splitBits",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "data register yang akan di konversi",
+                    "type": "RegisterInfo"
+                }
+            ],
+            "return": {
+                "description": "berisi dua bagian 4bit dalam bentuk binary dan decimal",
+                "type": "Object"
+            },
+            "class": "util",
+            "module": "RegisterInfoPseudoModule"
+        },
+        {
+            "file": "js/utility/utility.js",
+            "line": 39,
+            "description": "Method ini berguna untuk menurunkan kelas",
+            "itemtype": "method",
+            "name": "extends",
+            "params": [
+                {
+                    "name": "ctor",
+                    "description": "merupakan kelas turunan",
+                    "type": "Object"
+                },
+                {
+                    "name": "superCtor",
+                    "description": "merupakan kelas yang akan di turunkan",
+                    "type": "Object"
+                }
+            ],
+            "class": "util",
+            "module": "RegisterInfoPseudoModule"
+        }
+    ],
+    "warnings": []
+}

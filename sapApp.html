@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="bower_components/jqueryui/themes/base/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/template" id="registerBoxTemplate">
+        <div class="registerBox">
+            <p class="registerTitle"></p>
+            <p class="registerData" ng-bind="data"></p>
+        </div>
+    </script>
+</head>
+<body ng-app="sapApp">
+<div class="container-fluid" id="app-window" ng-controller="simulatorCtrl">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12" id="simulation-window">
+                <div class="busBox"><p id="buswTitle">BUS W</p></div>
+           </div>
+           <div id="side-window" class="col-md-6 col-sm-12 col-xs-12">
+               <div class="row" id="control-window" ng-controller="controlCtrl">
+					<div class="col-md-12">
+						<h2>SAP-1 Simulator</h2>
+					</div>
+                   <div class="col-md-12">
+                       <div class="row"><div class="col-md-12" id="control-form"><div class="btn-toolbar" role="toolbar">
+                           <div class="btn-group" role="group">
+                              <button type="button" ng-click="run()" ng-show="evaluated" class="btn btn-success btn-sm">
+                                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                                  Run
+                              </button>
+                              <button type="button" ng-click="pause()" ng-show="evaluated" class="btn btn-warning btn-sm">
+                                  <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+                                  Pause
+                              </button>
+                              <button type="button" ng-click="reset()" ng-hide="running" class="btn btn-danger btn-sm">
+                                  <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                                  Reset
+                              </button>
+                           </div>
+                        </div></div>
+						</div>
+                        <div class="row"><div class="col-md-12" id="parser-form"><form>
+                          <div class="form-group">
+                            <label for="expression-field">Expression</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="expression-field" ng-model="expression" placeholder="Expression">
+                                <span class="input-group-btn"><button ng-click="evaluate()" class="btn btn-primary">Evaluate</button></span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="instruction-field">Instruction</label>
+                            <textarea type="text" rows="12" class="form-control" readonly id="instruction-field" ng-model="instruction" placeholder="Instructions"></textarea>
+							  <br>
+							   <div class="btn-group" role="group" ng-hide="running" >
+								  <button type="button" class="btn btn-primary btn-sm" ng-click="editToogle()">
+									  <span class="glyphicon glyphicon-edit"  aria-hidden="true"></span>
+									  Edit
+								  </button>
+								 </div>
+								  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#logModal">
+									<span class="glyphicon glyphicon-list-alt"  aria-hidden="true"></span>
+									Logs
+								  </button>
+                          </div>
+                          <p><strong>Animation Speed :</strong> {{ animationSpeed }}
+                            <div id="speedSlider"></div>
+							<!-- Modal -->
+							<div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">Logs</h4>
+								  </div>
+								  <div class="modal-body">
+                                      <div class="logbody">
+                                        <table class="table table-condensed">
+                                            <tr ng-repeat="log in logs"><td><strong>{{ log. title }}</strong></td><td>
+                                                <table class="table table-condensed">
+                                                    <tr ng-repeat="regstat in log.body"><td>{{ regstat.name }}</td><td>{{ regstat.display }}</td></tr>
+                                                </table>
+                                            </td></tr>
+                                        </table>
+                                    </div>
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div>
+							  </div>
+							</div>
+                        </form></div></div>
+                    </div>
+               </div>
+           </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12">
+                        <table class="table table-condensed" ng-show="running">
+							<tr><td><strong>Current Status</strong></td></tr>
+                            <tr><td><strong>State: T{{ state }}</strong></td></tr>
+							<tr><td><strong>Instruction: {{ currentIns }}</strong></td></tr>
+                        </table>
+                    </div>
+				</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-condensed">
+                            <tr ng-repeat="block in reg.ram.info.memory | limitTo:8"><td>{{ block.displayAddress }}</td><td>{{ block.binary }}</td></tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-condensed">
+                            <tr ng-repeat="block in reg.ram.info.memory | limitTo: 16 : 8 "><td>{{ block.displayAddress }}</td><td>{{ block.binary }}</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-condensed">
+                    <tr ng-repeat="block in reg"><td>{{ block.info.title }}</td><td>{{ block.info.getDisplay() }}</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jqueryui/jquery-ui.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/utility/utility.js"></script>
+    <script src="config/globalConfig.js"></script>
+    <script src="js/services/parserModule.js"></script>
+    <script src="js/services/schedulerModule.js"></script>
+    <script src="js/services/registerModule.js"></script>
+    <script src="js/controllers/controlModule.js"></script>
+    <script src="js/controllers/simulatorModule.js"></script>
+    <script src="js/coreDataStructure/registerInfo.js"></script>
+    <script src="js/coreDataStructure/cuInfo.js"></script>
+    <script src="js/coreDataStructure/ramInfo.js"></script>
+    <script src="js/coreDataStructure/bdInfo.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

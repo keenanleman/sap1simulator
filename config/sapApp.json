@@ -1,0 +1,13 @@
+{
+    "name": "SAP-1 Simulator",
+    "description": "Simulator for SAP-1",
+    "version": "0.0.1",
+    "options": {
+        "linkNatives": "true",        
+        "attributesEmit": "true",
+        "selleck": "true",
+        "exclude":  "bower_components",
+        "paths": "*/js",
+        "outdir": "../api-js"
+    }
+}

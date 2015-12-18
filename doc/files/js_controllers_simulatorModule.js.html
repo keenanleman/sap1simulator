@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>js/controllers/simulatorModule.js - SAP-1 Simulator</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="SAP-1 Simulator" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.0.1</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/BdInfo.html">BdInfo</a></li>
+                                <li><a href="../classes/controlCtrl.html">controlCtrl</a></li>
+                                <li><a href="../classes/CuInfo.html">CuInfo</a></li>
+                                <li><a href="../classes/parserService.html">parserService</a></li>
+                                <li><a href="../classes/RamInfo.html">RamInfo</a></li>
+                                <li><a href="../classes/Register.html">Register</a></li>
+                                <li><a href="../classes/RegisterInfo.html">RegisterInfo</a></li>
+                                <li><a href="../classes/registerService.html">registerService</a></li>
+                                <li><a href="../classes/schedulerModule.html">schedulerModule</a></li>
+                                <li><a href="../classes/simulatorCtrl.html">simulatorCtrl</a></li>
+                                <li><a href="../classes/util.html">util</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/controlModule.html">controlModule</a></li>
+                                <li><a href="../modules/parserModule.html">parserModule</a></li>
+                                <li><a href="../modules/RegisterInfoPseudoModule.html">RegisterInfoPseudoModule</a></li>
+                                <li><a href="../modules/registerModule.html">registerModule</a></li>
+                                <li><a href="../modules/sapApp.html">sapApp</a></li>
+                                <li><a href="../modules/schedulerModule.html">schedulerModule</a></li>
+                                <li><a href="../modules/simulatorModule.html">simulatorModule</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: js/controllers/simulatorModule.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * Sebuah module berisi sebuah controller yaitu simulationCtrl controller yang
+ * berguna untuk berinteraksi langsung dengan DOM dan animasi DOM.
+ * @module simulatorModule
+ */
+var simulatorModule = angular.module(&#x27;simulatorModule&#x27;,[&#x27;registerModule&#x27;,&#x27;schedulerModule&#x27;]);
+/**
+ * simulatorCtrl merupakan sebuah controller yang dipangil oleh DOM sebegai sebuah constructor,
+ * controller ini berguna sebagai DOM generator, DOM controller, dan jembatan antara DOM dan
+ * model data.
+ * @class simulatorCtrl
+ * @constructor
+ */
+simulatorModule.controller(&#x27;simulatorCtrl&#x27;,[&#x27;$scope&#x27;,&#x27;$rootScope&#x27;,&#x27;$q&#x27;,&#x27;$compile&#x27;,&#x27;registerService&#x27;,&#x27;schedulerService&#x27;,
+function($scope,$rootScope,$q,$compile,registerService,schedulerService){
+    /**
+     * Pengaturan kecepatan animasi
+     * @property animationSpeed
+     * @type Number
+     */
+    var self = $scope;
+    self.animationSpeed = 1200
+    /**
+     * Pengaturan delay animasi
+     * @property masterDelay
+     * @type Number
+     */
+    self.masterDelay = 500;
+    /**
+     * Event slide dari speedSlider yang mengatur kecepatan animasi
+     * @event slide
+     */
+    speedSlider.on(&#x27;slide&#x27;,function(event,ui){
+        self.masterDelay = 1750 - ui.value;
+        self.animationSpeed = ui.value;
+        self.$digest();
+    });
+    var bus = $(&#x27;.busBox&#x27;).offset();
+    /**
+     * Sebagai objek yang menampung register
+     * @property reg
+     * @type Object
+     */
+    self.reg = {};
+    /**
+     * Dijalankan ketika instruksi LDA di gunakan,
+     * melakukan instruksi tergantung dari state method ini dipanggil dan dipandu oleh &#x27;schedulerService&#x27;
+     * @method lda
+     * @return {Promise}
+     */
+    self.lda = function(){
+        var q = $q.defer();
+        if(schedulerService.currentState &lt; 5) self.generalInstruction().then(function(){
+            schedulerService.nextState();
+            q.resolve();
+        })
+        else if(schedulerService.currentState == 5) self.T5_LDA().then(function(){
+            schedulerService.nextState();
+            q.resolve();
+        })
+        else setTimeout(function(){
+            schedulerService.nextState();
+            q.resolve()
+        },self.masterDelay);
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi HALT di gunakan, dan dipandu oleh &#x27;schedulerService&#x27;
+     * melakukan instruksi tergantung dari state method ini dipanggil dan dipandu oleh &#x27;schedulerService&#x27;
+     * @method halt
+     * @return {Promise}
+     */
+    self.halt = function(){
+        var q = $q.defer();
+        if(schedulerService.currentState &lt; 3) self.generalInstruction().then(function(){
+            schedulerService.nextState();
+            q.resolve();
+        })
+        else if(schedulerService.currentState == 3) self.T3().then(function(){
+            schedulerService.pauseScheduler();
+			$rootScope.$broadcast(&#x27;simulationEnded&#x27;);
+			self.running = false;
+            q.resolve();
+        })
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi OUT di gunakan, dan dipandu oleh &#x27;schedulerService&#x27;
+     * melakukan instruksi tergantung dari state method ini dipanggil dan dipandu oleh &#x27;schedulerService&#x27;
+     * @method out
+     * @return {Promise}
+     */
+    self.out = function(){
+        var q = $q.defer();
+        if(schedulerService.currentState &lt; 4) self.generalInstruction().then(function(){
+            schedulerService.nextState();
+            q.resolve();
+        })
+        else if(schedulerService.currentState == 4) self.T4_OUT().then(function(){
+            schedulerService.nextState();
+            q.resolve();
+        })
+        else setTimeout(function(){
+            schedulerService.nextState();
+            q.resolve();
+        },self.masterDelay);
+        return q.promise;
+    }
+
+    /**
+     * Dijalankan ketika instruksi ADD atau SUB di gunakan, dan dipandu oleh &#x27;schedulerService&#x27;
+     * melakukan instruksi tergantung dari state method ini dipanggil dan dipandu oleh &#x27;schedulerService&#x27;
+     * @method cal
+     * @param {boolean} plus jika bernilai true maka operasi ADD dijalankan jika false maka operasi SUB yang akan dijalankan
+     * @return {Promise}
+     */
+    self.cal = function(plus){
+        var q = $q.defer();
+        var q = $q.defer();
+        if(schedulerService.currentState &lt; 5) self.generalInstruction(plus).then(function(){
+            schedulerService.nextState();
+            q.resolve();
+        })
+        else if(schedulerService.currentState == 5) self.T5_CAL(plus).then(function(){
+            schedulerService.nextState();
+            q.resolve();
+        })
+        else if(schedulerService.currentState == 6) self.T6_CAL().then(function(){
+            schedulerService.nextState();
+            q.resolve();
+        })
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika sebuah instruksi memiliki state yang sama, maka akan dijalankan
+     * sebuah method umum saja , dan dipandu oleh &#x27;schedulerService&#x27;
+     * @method generalInstruction
+     * @return {Promise}
+     */
+    self.generalInstruction = function(){
+        var q = $q.defer();
+        if(schedulerService.currentState == 0) setTimeout(function(){q.resolve()},self.masterDelay);
+        else if(schedulerService.currentState == 1) self.T1().then(function(){q.resolve();})
+        else if(schedulerService.currentState == 2) self.T2().then(function(){q.resolve();})
+        else if(schedulerService.currentState == 3) self.T3().then(function(){q.resolve();})
+        else if(schedulerService.currentState == 4) self.T4().then(function(){q.resolve();})
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi-instruksi berada pada state T1
+     * melakukan animasi, perpindahan data, dan perubahan register CU
+     * @method T1
+     * @return {Promise}
+     */
+    self.T1 = function(){
+        var q = $q.defer();
+        self.reg.cu.info.reset_cu();
+        self.reg.pc.moveData(self.reg.mar,true,true)
+        .then(function(){
+            q.resolve();
+        })
+        self.reg.cu.info.ep();
+        self.reg.cu.info.not_lm();
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi-instruksi berada pada state T2
+     * melakukan animasi, perpindahan data, dan perubahan register CU
+     * @method T2
+     * @return {Promise}
+     */
+    self.T2 = function(){
+        var q = $q.defer();
+        self.reg.cu.info.reset_cu();
+        self.reg.pc.increment()
+        setTimeout(function(){
+            q.resolve();
+        },self.masterDelay);
+        self.reg.cu.info.cp();
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi-instruksi berada pada state T3
+     * melakukan animasi, perpindahan data, dan perubahan register CU
+     * @method T3
+     * @return {Promise}
+     */
+    self.T3 = function(){
+        var q = $q.defer();
+        self.reg.cu.info.reset_cu();
+        self.reg.cu.info.not_ce();
+        self.reg.cu.info.not_li();
+        self.reg.mar.moveData(self.reg.ram,false,true)
+        .then(function(){
+            return self.reg.ram.moveData(self.reg.ir,true,true)
+        })
+        .then(function(){
+            return self.reg.ir.moveData(self.reg.cu,false,false,1)
+        })
+        .then(function(){
+            q.resolve();
+        })
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi-instruksi berada pada state T4, kecuali instruksi OUT
+     * melakukan animasi, perpindahan data, dan perubahan register CU
+     * @method T4
+     * @return {Promise}
+     */
+    self.T4 = function(){
+        var q = $q.defer();
+        self.reg.cu.info.reset_cu();
+        self.reg.cu.info.not_lm();
+        self.reg.cu.info.not_ei();
+        self.reg.ir.moveData(self.reg.mar,true,true,2)
+        .then(function(){
+            return self.reg.mar.moveData(self.reg.ram,false,true);
+        })
+        .then(function(){
+            q.resolve();
+        });
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi LDA berada pada state T5
+     * melakukan animasi, perpindahan data, dan perubahan register CU
+     * @method T5_LDA
+     * @return {Promise}
+     */
+    self.T5_LDA = function(){
+        var q = $q.defer();
+        self.reg.cu.info.reset_cu();
+        self.reg.cu.info.not_la();
+        self.reg.cu.info.not_ce();
+        self.reg.ram.moveData(self.reg.acc,true,true)
+        .then(function(){
+            q.resolve();
+        });
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi OUT berada pada state T4
+     * melakukan animasi, perpindahan data, dan perubahan register CU
+     * @method T4_OUT
+     * @return {Promise}
+     */
+    self.T4_OUT = function(){
+        var q = $q.defer();
+        self.reg.cu.info.reset_cu();
+        self.reg.cu.info.ea();
+        self.reg.cu.info.not_lo();
+        self.reg.acc.moveData(self.reg.or,true,true)
+        .then(function(){
+            return self.reg.or.moveData(self.reg.bd,false,true);
+        })
+        .then(function(){
+            q.resolve();
+        });
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi ADD atau SUB berada pada state T5
+     * melakukan animasi, perpindahan data, dan perubahan register CU
+     * @method T5_CAL
+     * @param {boolean} plus jika bernilai true maka operasi ADD dijalankan jika false maka operasi SUB yang akan dijalankan
+     * @return {Promise}
+     */
+    self.T5_CAL = function(plus){
+        var q = $q.defer();
+        self.reg.cu.info.reset_cu();
+        self.reg.cu.info.not_ce();
+        self.reg.cu.info.not_lb();
+        self.reg.ram.moveData(self.reg.rb,true,true)
+        .then(function(){
+            return self.addRegsTo(self.reg.acc,self.reg.rb,self.reg.alu,plus);
+        })
+        .then(function(){
+            q.resolve();
+        });
+        return q.promise;
+    }
+    /**
+     * Dijalankan ketika instruksi ADD atau SUB berada pada state T6
+     * melakukan animasi, perpindahan data, dan perubahan register CU
+     * @method T6_CAL
+     * @return {Promise}
+     */
+    self.T6_CAL = function(){
+        var q = $q.defer();
+        self.reg.cu.info.reset_cu();
+        self.reg.cu.info.not_la();
+        self.reg.cu.info.eu();
+        self.reg.alu.moveData(self.reg.acc,true,true)
+        .then(function(){
+            q.resolve();
+        });
+        return q.promise;
+    }
+    /**
+     * Digunakan untuk membuat animasi dan perpindahan data, dari hasil sum atau substract dari
+     * dua buah register dan menyimpannya ke register lain
+     * @method addRegsTo
+     * @param {Register} reg1 register pertama dari 2 register yang akan di sum atau substract
+     * @param {Register} reg2 register pertama dari 2 register yang akan di sum atau men-substract
+     * @param {Register} dest register dimana hasil akan disimpan
+     * @param {boolean} plus jika bernilai true maka data akan di sum dan jika false maka data akan di substract
+     * @return {Promise}
+     */
+    self.addRegsTo = function(reg1,reg2,dest,plus){
+        var q = $q.defer();
+        reg1.createCarrier()
+        .then(function(carrierBox1){
+            carrierBox1.animate({ top : dest.dataDom.offset().top - 10 },self.masterDelay)
+            .animate({opacity : 0},self.masterDelay,function(){
+                carrierBox1.remove();
+            });
+        });
+        reg2.createCarrier()
+        .then(function(carrierBox2){
+            carrierBox2.animate({ top : dest.dataDom.offset().top - 10 },self.masterDelay)
+            .animate({opacity : 0},self.masterDelay,function(){
+                carrierBox2.remove();
+                if(plus)dest.info.setData({value : reg1.info.value + reg2.info.value, bits : 8});
+                else dest.info.setData({value : reg1.info.value - reg2.info.value, bits : 8});
+                self.$digest()
+                q.resolve();
+            });
+        });
+        return q.promise;
+    }
+    /**
+     * Model yang menyimpan instruksi yang sedang dijalankan
+     * @property currentIns
+     * @type {String}
+     */
+    self.currentIns = &#x27;&#x27;;
+    /**
+     * Model yang menyimpan state yang sedang berjalan
+     * @property state
+     * @type {Number}
+     */
+	self.state = 0;
+	 /**
+     * Sebuah objek yang menyimpan log dari hasil simulasi
+     * @property logs
+     * @type Array
+     */
+	self.logs = [];
+    /**
+     * Model yang menyimpan status dari simulasi
+     * @property running
+     * @type {boolean}
+     */
+	self.running = false;
+    /**
+     * Method yang memulai simulasi di simulationCtrl
+     * @method startSimulation
+     */
+    self.startSimulation = function(){
+        schedulerService.startScheduler();
+		self.running = true;
+        self.sentinel();
+    }
+    /**
+     * Method yang menghentikan simulasi di simulationCtrl
+     * @method pauseSimulation
+     */
+    self.pauseSimulation = function(){
+        schedulerService.pauseScheduler();
+		self.running = false;
+    }
+    /**
+     * Method yang me-reset simulasi di simulationCtrl
+     * @method resetSimulation
+     */
+    self.resetSimulation = function(){
+        schedulerService.resetScheduler();
+		self.reg.ram.info.resetRam();
+		self.reg.cu.info.reset_cu();
+		self.keys = [];
+		var keys = Object.keys(this.reg);
+		for(var i = 0;i &lt; keys.length;++i){
+			if(keys[i] !== &#x27;ram&#x27; &amp;&amp; keys[i] !== &#x27;cu&#x27;)this.reg[keys[i]].info.resetToZero();
+		}
+    }
+    /**
+     * Membuat animasi sambungan antara dua register
+     * @method registerToRegisterConnection
+     * @param {Register} reg1 register yang akan disambungkan ke register kedua
+     * @param {Register} reg2 register yang akan disambungkan ke register pertama
+     * @param {String} title tulisan/judul yang akan ditampilkan
+     * @param {String} direction arah dari jalur, ke kiri atau ke kanan [&#x27;left&#x27;,&#x27;right&#x27;]
+     */
+    self.registerToRegisterConnection = function(reg1,reg2,title,direction){
+        var up = &#x27;&amp;#x2191;&#x27;;
+        var down = &#x27;&amp;#x2193;&#x27;;
+        var pos1 = reg1.dom.offset();
+        var pos2 = reg2.dom.offset();
+        var height = Math.abs(pos2.top - pos1.top);
+        var connector = registerConnector.clone();
+        if(direction === &#x27;up&#x27;) title += up;
+        else if(direction === &#x27;down&#x27;) title = title + down;
+        connector.find(&#x27;.connectorTitle&#x27;).css({
+            top : &#x27;50%&#x27;
+        }).html(title);
+        connector.css({
+            height : height,
+            top : pos1.top,
+            left : pos1.left + 35,
+            width : &#x27;25px&#x27;
+        });
+        simulatorWindow.append(connector);
+    }
+    /**
+     * Membuat animasi sambungan antara bus dengan register
+     * @method busConnection
+     * @param {Register} reg register yang akan disambungkan ke bus
+     * @param {String} title tulisan/judul yang akan ditampilkan
+     * @param {String} align tempat register berada, di sebelah kiri bus atau kanan [&#x27;left&#x27;,&#x27;right&#x27;]
+     * @param {String} direction arah dari jalur, ke kiri atau ke kanan [&#x27;left&#x27;,&#x27;right&#x27;]
+     */
+    self.busConnection = function(reg,title,align,direction){
+        var right = &#x27;&amp;#x2192;&#x27;;
+        var left = &#x27;&amp;#x2190;&#x27;;
+        var pos = reg.dom.position();
+        var startX = 0;
+        if(align ===  &#x27;left&#x27;) startX = pos.left + 57;
+        else if(align === &#x27;right&#x27;) startX = busBox.position().left + 92;
+        var width = Math.abs(busBox.position().left - pos.left);
+        var connector = registerConnector.clone();
+        if(direction === &#x27;right&#x27;) title += right;
+        else if(direction === &#x27;left&#x27;) title = left + title;
+        connector.find(&#x27;.connectorTitle&#x27;).html(title);
+        connector.css({
+            height : &#x27;15px&#x27;,
+            top : pos.top + 14,
+            left : startX,
+            width : width
+        });
+        simulatorWindow.append(connector);
+    }
+    /**
+     * Membuat animasi sambungan ganda antara bus dengan register
+     * @method doubleBusConnection
+     * @param {Register} reg register yang akan disambungkan ke bus
+     * @param {String} title1 tulisan/judul yang akan ditampilkan pada jalur pertama
+     * @param {String} title2 tulisan/judul yang akan ditampilkan pada jalur ke dua
+     * @param {String} align tempat register berada, di sebelah kiri bus atau kanan [&#x27;left&#x27;,&#x27;right&#x27;]
+     * @param {String} direction1 arah dari jalur pertama, ke kiri atau ke kanan [&#x27;left&#x27;,&#x27;right&#x27;]
+     * @param {String} direction2 arah dari jalur kedua, ke kiri atau ke kanan [&#x27;left&#x27;,&#x27;right&#x27;]
+     */
+    self.doubleBusConnection = function(reg,title1, title2,align,direction1, direction2){
+        var right = &#x27;&amp;#x2192;&#x27;;
+        var left = &#x27;&amp;#x2190;&#x27;;
+        var pos = reg.dom.position();
+        var width = Math.abs(busBox.position().left - pos.left);
+        var connector = registerConnector.clone();
+        var startX = 0;
+        if(align ===  &#x27;left&#x27;) startX = pos.left + 57;
+        else if(align === &#x27;right&#x27;) startX = busBox.position().left + 92;
+        if(direction1 === &#x27;right&#x27;) title1 += right;
+        else if(direction1 === &#x27;left&#x27;) title1 = left + title1;
+        connector.find(&#x27;.connectorTitle&#x27;).html(title1);
+        simulatorWindow.append(connector);
+        connector.css({
+            height : &#x27;15px&#x27;,
+            top : pos.top + 6,
+            left : startX,
+            width : width
+        });
+        connector = connector.clone();
+        if(direction2 === &#x27;right&#x27;) title2 += right;
+        else if(direction2 === &#x27;left&#x27;) title2 = left + title2;
+        connector.find(&#x27;.connectorTitle&#x27;).html(title2);
+        simulatorWindow.append(connector);
+        connector.css({
+            height : &#x27;15px&#x27;,
+            top : pos.top + 24,
+            left : startX,
+            width : width
+        });
+    }
+    var keys = [];
+   
+    /**
+     * Merupakan method yang secara langsung mengendalikan method-method animasi dan perpindahan data
+     * secara synchronous, dan di pandu oleh flag-flag dari &#x27;schedulerService&#x27;
+     * @method sentinel
+     */
+    self.sentinel = function(){
+        if(schedulerService.status == false){
+            return;
+        }
+        var cmd = schedulerService.getCurrentInstruction();
+		self.currentIns = cmd;
+		self.state = schedulerService.currentState;
+		var cIdx = self.logs.push({title : self.currentIns + &#x27; T&#x27; + self.state}) - 1;
+        self.logs[cIdx].body = [];
+        var logCallback = function(){ keys.forEach(function(key){
+                self.logs[cIdx].body.push({name : self.reg[key].info.title, display : self.reg[key].info.getDisplay()});
+            });
+        }
+        cmd = cmd.split(&#x27; &#x27;)[0]
+        if(cmd == &#x27;LDA&#x27;) self.lda().then(function(){
+            logCallback();
+            self.sentinel()
+        });
+        else if(cmd == &#x27;ADD&#x27;) self.cal(true).then(function(){
+            logCallback();
+            self.sentinel()
+        });
+        else if(cmd == &#x27;SUB&#x27;) self.cal(false).then(function(){
+            logCallback();
+            self.sentinel()
+        });
+        else if(cmd == &#x27;OUT&#x27;) self.out().then(function(){
+            logCallback();
+            self.sentinel()
+        });
+        else if(cmd == &#x27;HALT&#x27;) self.halt().then(function(){
+            logCallback();
+            self.sentinel()
+        });
+    }
+    /**
+     * Merupakan event-listener dari event &#x27;startSimulation&#x27;, yang akan memulai simulasi
+     * @event startSimulation
+     */
+    $rootScope.$on(&#x27;startSimulation&#x27;,function(event){
+        keys = Object.keys(self.reg);
+        self.startSimulation();
+    })
+    /**
+     * Merupakan event-listener dari event &#x27;pauseSimulation&#x27;, yang akan menghentikan simulasi
+     * @event pauseSimulation
+     */
+    $rootScope.$on(&#x27;pauseSimulation&#x27;,function(event){
+        self.pauseSimulation();
+		console.log(self.logs);
+    })
+    /**
+     * Merupakan event-listener dari event &#x27;resetSimulation&#x27;, yang akan me-reset simulasi
+     * @event resetSimulation
+     */
+    $rootScope.$on(&#x27;resetSimulation&#x27;,function(event){
+        self.resetSimulation();
+    })
+
+    /**
+     * Kelas Register merupakan kelas wrapper dari kelas RegisterInfo yang memberikan
+     * kelas RegisterInfo kemampuan untuk berinteraksi langsung dengan DOM dan animasi DOM
+     * @class Register
+     * @method addReg
+     * @param {String} type tipe register yang akan dibuat
+     * @param {String} title nama register yang akan dibuat
+     * @param {String} value nilai awal register
+     * @param {String} left posisi x register
+     * @param {String} top posisi y register
+     * @param {String} bit ukuran register dalam bit
+     * @constructor
+     */
+    var addReg = function(type,title,value,left,top,bits){
+        var newreg = {};
+        /**
+         * Merupakan property yang menampung kelas RegisterInfo
+         * @property info
+         * @module RegisterInfoPseudoModule
+         * @type RegisterInfo
+         */
+        if(type === &#x27;reg&#x27;) newreg.info = registerService.addRegister(title,value,left,top,bits);
+        else if(type === &#x27;ram&#x27;) newreg.info = registerService.addRam(value,left,top);
+        else if(type === &#x27;cu&#x27;) newreg.info = registerService.addCU(left,top);
+        else if(type === &#x27;bd&#x27;) newreg.info = registerService.addBD(left,top);
+        /**
+         * Menyimpan DOM untuk register yang di construct
+         * @property dom
+         * @type Object
+         */
+        newreg.dom = registerBoxTemplate.clone();
+        newreg.dom.find(&#x27;.registerTitle&#x27;).html(title);
+        newreg.dom.css({left : newreg.info.top, top : newreg.info.left});
+        /**
+         * Menyimpan DOM untuk register yang di construct
+         * @property dataDom
+         * @type Object
+         */
+        newreg.dataDom = newreg.dom.find(&#x27;.registerData&#x27;);
+        newreg.dataDom.attr(&#x27;ng-bind&#x27;,&#x27;reg.&#x27; + newreg.info.name + &#x27;.info.getDisplay()&#x27;);
+        newreg.dom.appendTo(simulatorWindow);
+        $compile(newreg.dom)(self);
+        /**
+         * Membuat DOM &#x27;data carrier&#x27; sebagai animasi perpindahan data
+         * @method createCarrier
+         * @param {Number} EtoF bagian 4-bit pertama jika bernilai satu dan 4-bit terakhir jika bernilai dua,
+         * dari 8 bit data yang akan dipindahkan ke register 4-bit, tidak di gunakan jika perpindahan data
+         * antara dua register berukuran sama.
+         */
+        newreg.createCarrier = function(EtoF){
+            var q = $q.defer();
+            var carrierBox = newreg.dataDom.clone();
+            var pos = newreg.dataDom.offset();
+            var size = {width : newreg.dataDom.width() ,height : newreg.dataDom.height()};
+            carrierBox.addClass(&#x27;carrierBox&#x27;);
+            carrierBox.css({
+                opacity:0,
+                top : pos.top - 14,
+                left : pos.left - 14,
+                height : size.height,
+                width : size.width
+            });
+            if(EtoF){
+                var dataBin = util.splitBits(newreg.info);
+                if(EtoF === 1){
+                    carrierBox.html(dataBin.first.display);
+                }else{
+                    carrierBox.html(dataBin.second.display);
+                }
+            }else{
+                carrierBox.html(newreg.info.display);
+            }
+            simulatorWindow.append(carrierBox);
+            carrierBox.animate({opacity:1},self.masterDelay,function(){
+                q.resolve(carrierBox);
+            });
+            return q.promise;
+        }
+        /**
+         * Membuat animasi dan perpindahan data ke register lain
+         * @method moveData
+         * @param {Register} reg register tempat data akan dipindahkan
+         * @param {boolean} useBus jika bernilai true maka animasi perpindahan data akan melewati bus dan sebaliknya
+         * @param {boolean} real jika bernilai false maka data tidak akan dipindahkan melainkan hanya membuat animasinya saja
+         * @param {Number} EtoF bagian 4-bit pertama jika bernilai satu dan 4-bit terakhir jika bernilai dua,
+         * dari 8 bit data yang akan dipindahkan ke register 4-bit, tidak di gunakan jika perpindahan data
+         * antara dua register berukuran sama.
+         */
+        newreg.moveData = function(reg,useBus,real,EtoF){
+            var q = $q.defer();
+            newreg.createCarrier(EtoF)
+            .then(function(carrierBox){
+                if(useBus)carrierBox.animate({ left : bus.left + 20 },self.masterDelay);
+                carrierBox.animate({ top : reg.dataDom.offset().top - 14 },self.masterDelay);
+                if(useBus)carrierBox.animate({left : reg.dataDom.offset().left - 14},self.masterDelay);
+                carrierBox.animate({opacity : 0},self.masterDelay,function(){
+                    carrierBox.remove();
+                    if(real)reg.info.setData(newreg.info,EtoF);
+                    self.$digest();
+                    q.resolve();
+                });
+            });
+            return q.promise;
+        }
+        /**
+         * Menambahkan 1 pada register
+         * @method increment
+         */
+        newreg.increment = function(){
+            newreg.info.value++;
+            newreg.info.setData(newreg.info);
+        }
+        self.reg[newreg.info.name] = newreg;
+    }
+    /**
+     * Melakukan instansiasi register-register
+     * @method init
+     */
+    self.init = function(){
+        addReg(&#x27;reg&#x27;,&#x27;PC&#x27;,0,&#x27;10%&#x27;,&#x27;5%&#x27;,4);
+        addReg(&#x27;reg&#x27;,&#x27;MAR&#x27;,0,&#x27;25%&#x27;,&#x27;5%&#x27;,4);
+        addReg(&#x27;ram&#x27;,&#x27;RAM&#x27;,0,&#x27;40%&#x27;,&#x27;5%&#x27;,4);
+        addReg(&#x27;reg&#x27;,&#x27;IR&#x27;,0,&#x27;55%&#x27;,&#x27;5%&#x27;,8);
+        addReg(&#x27;cu&#x27;,&#x27;CU&#x27;,0,&#x27;70%&#x27;,&#x27;5%&#x27;,4);
+        addReg(&#x27;reg&#x27;,&#x27;ACC&#x27;,0,&#x27;10%&#x27;,&#x27;70%&#x27;,8);
+        addReg(&#x27;reg&#x27;,&#x27;ALU&#x27;,0,&#x27;25%&#x27;,&#x27;70%&#x27;,8);
+        addReg(&#x27;reg&#x27;,&#x27;RB&#x27;,0,&#x27;40%&#x27;,&#x27;70%&#x27;,8);
+        addReg(&#x27;reg&#x27;,&#x27;OR&#x27;,0,&#x27;55%&#x27;,&#x27;70%&#x27;,8);
+        addReg(&#x27;bd&#x27;,&#x27;BD&#x27;,0,&#x27;70%&#x27;,&#x27;70%&#x27;,8);
+        self.registerToRegisterConnection(self.reg.mar, self.reg.ram,&#x27;8&#x27;,&#x27;down&#x27;);
+        self.busConnection(self.reg.pc,&#x27;4&#x27;,&#x27;left&#x27;,&#x27;right&#x27;);
+        self.busConnection(self.reg.mar,&#x27;4&#x27;,&#x27;left&#x27;,&#x27;left&#x27;);
+        self.busConnection(self.reg.ram,&#x27;8&#x27;,&#x27;left&#x27;,&#x27;right&#x27;);
+        self.registerToRegisterConnection(self.reg.ir, self.reg.cu,&#x27;4&#x27;,&#x27;down&#x27;);
+        self.doubleBusConnection(self.reg.ir,&#x27;8&#x27;,&#x27;4&#x27;,&#x27;left&#x27;,&#x27;left&#x27;,&#x27;right&#x27;);
+        self.doubleBusConnection(self.reg.acc,&#x27;8&#x27;,&#x27;8&#x27;,&#x27;right&#x27;,&#x27;right&#x27;,&#x27;left&#x27;);
+        self.busConnection(self.reg.alu,&#x27;8&#x27;,&#x27;right&#x27;,&#x27;left&#x27;);
+        self.registerToRegisterConnection(self.reg.acc, self.reg.alu,&#x27;8&#x27;,&#x27;down&#x27;);
+        self.registerToRegisterConnection(self.reg.alu, self.reg.rb,&#x27;8&#x27;,&#x27;up&#x27;);
+        self.busConnection(self.reg.rb,&#x27;8&#x27;,&#x27;right&#x27;,&#x27;right&#x27;);
+        self.busConnection(self.reg.or,&#x27;8&#x27;,&#x27;right&#x27;,&#x27;right&#x27;);
+        self.registerToRegisterConnection(self.reg.or, self.reg.bd,&#x27;8&#x27;,&#x27;down&#x27;);
+    }
+    self.init();
+}]);
+
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
